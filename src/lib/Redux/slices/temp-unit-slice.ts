@@ -13,9 +13,18 @@ const tempUnitSlice = createSlice({
   reducers: {
     setTempUnit: (state, action: PayloadAction<TempUnit>) => {
       state.value.temp_unit = action.payload
+      localStorage.setItem("temp_unit", state.value.temp_unit)
+    },
+    initializeTempUnit: (state) => {
+      if (typeof window !== "undefined") {
+        const saved = localStorage.getItem("temp_unit");
+        if (saved === "Celsius" || saved === "Fahrenheit" || saved === "Kelvin") {
+          state.value.temp_unit = saved;
+        }
+      }
     }
   }
 })
 
-export const { setTempUnit } = tempUnitSlice.actions
+export const { setTempUnit, initializeTempUnit } = tempUnitSlice.actions
 export default tempUnitSlice.reducer
