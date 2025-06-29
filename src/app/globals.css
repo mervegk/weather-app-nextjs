@@ -93,13 +93,15 @@
   --accent-hover: #9fb1bb;
   --foreground-hover: #1f2b33;
   --background-hover: #cfd4dd;
+
+  --card-box-shadow: rgba(99, 99, 99, 0.2)
 }
 
 .dark {
   --background: #27363f;
   --foreground: #dce0e8;
 
-  --card: #27363f;
+  --card: #3c4a52;
   --card-foreground: #dce0e8;
 
   --popover: #27363f;
@@ -143,6 +145,8 @@
   --accent-hover: #b2c4cc;
   --foreground-hover: #e9edf1;
   --background-hover: #1e2b34;
+
+  --card-box-shadow: rgba(19, 19, 19, 0.2)
 }
 
 /* @layer utilities {
@@ -155,6 +159,9 @@
   background-color: var(--primary-hover);
 }
 
+@utility card-box-shadow {
+  box-shadow: var(--card-box-shadow) 2px 4px 9px 2px;
+}
 
 @layer base {
   * {

@@ -12,12 +12,17 @@ interface SwitchProps
 }
 
 function Switch({ className, withIcon = false, ...props }: SwitchProps) {
-  const [checked, setChecked] = React.useState(
-    Boolean(props.defaultChecked || props.checked)
+  const isControlled = props.checked !== undefined
+  const [internalChecked, setInternalChecked] = React.useState(
+    Boolean(props.defaultChecked)
   )
 
+  const checked = isControlled ? Boolean(props.checked) : internalChecked
+
   const handleChange = (val: boolean) => {
-    setChecked(val)
+    if (!isControlled) {
+      setInternalChecked(val)
+    }
     props.onCheckedChange?.(val)
   }
 

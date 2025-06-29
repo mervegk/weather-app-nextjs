@@ -1,13 +1,20 @@
-// hooks/useInitTheme.ts
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setTheme } from "@/lib/Redux/slices/theme-slice";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "@/lib/Redux/store";
+import { initializeTheme } from "@/lib/Redux/slices/theme-slice";
 
-export function useTheme() {
+export const useTheme = () => {
   const dispatch = useDispatch();
+  const { theme } = useSelector((state: RootState) => state.theme.value);
+  const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
-    const theme = (localStorage.getItem("theme") as "light" | "dark") || "light";
-    dispatch(setTheme(theme));
-  }, []);
-}
+    dispatch(initializeTheme());
+    setIsHydrated(true);
+  }, [dispatch]);
+
+  return {
+    theme: isHydrated ? theme : "light",
+    isHydrated
+  };
+};
