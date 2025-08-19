@@ -6,10 +6,7 @@ export default function Redwhitebtn() {
   const [redCount, setRedCount] = useState<number>(0)
   const [whiteCount, setWhiteCount] = useState<number>(0)
 
-  const handleColorClick = (colorName: string) => {
-    setClickedColors((prev) => [...prev, colorName])
-    console.log(colorName)
-  }
+  const handleColorClick = (colorName: string) => setClickedColors((prev) => [...prev, colorName])
 
   useEffect(() => {
     if (clickedColors.length === 0) return;
