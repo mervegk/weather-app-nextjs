@@ -38,7 +38,7 @@ export default function Redwhitebtn() {
       <section className='grid grid-cols-12'>
         {
           clickedColors?.map((i, index: number) => <div key={index} className='flex gap-2'>
-            <p>{index}.</p>
+            <p>{index + 1}.</p>
             <p className='text-white'>{i}</p>
           </div>)
         }
