@@ -1,9 +1,22 @@
+"use client"
+import { useEffect, useState } from "react"
 import { Button } from "../ui/button"
 import { Card, CardHeader, CardTitle, CardContent } from "../ui/card"
 
 type Props = {}
 
 export default function FavLocations({ }: Props) {
+
+  const [data, setData] = useState();
+  useEffect(() => {
+    const response = fetch(`${process.env.NEXT_PUBLIC_BASE_URL}`)
+      .then(res => res.json())
+      .then(data => setData(data))
+  }, [])
+
+  console.log(data);
+
+
   return (
     <Card className="w-full max-w-sm shadow gap-1 border-none">
       <CardHeader><CardTitle>Favorite Locations</CardTitle></CardHeader>
