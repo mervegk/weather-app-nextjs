@@ -39,13 +39,13 @@ export default function Redwhitebtn() {
         {
           clickedColors?.map((i, index: number) => <div key={index} className='flex gap-2'>
             <p>{index + 1}.</p>
-            <p className='text-white'>{i}</p>
+            <p>{i}</p>
           </div>)
         }
       </section>
-      <section>
-        <p> <span className='font-bold text-red-500'>Kırmızı</span>  tıklanma sayısı {redCount} </p>
-        <p> <span className='font-bold'>Beyaz</span>  tıklanma sayısı {whiteCount} </p>
+      <section className='flex gap-4 justify-end w-full'>
+        <p> <span className='font-bold shadow-xl text-red-500'>Kırmızı</span>  tıklanma sayısı {redCount} </p>
+        <p> <span className='font-bold shadow-xl'>Beyaz</span>  tıklanma sayısı {whiteCount} </p>
       </section>
     </section>
   )
